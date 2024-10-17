@@ -1,4 +1,4 @@
-import { Button, Card, Container, Flex, Grid, Text } from '@radix-ui/themes';
+import { Button, Card, Container, Flex, Text } from '@radix-ui/themes';
 import { Icon, IconBrandCss3, IconBrandGit, IconBrandGithub, IconBrandHtml5, IconBrandJavascript, IconBrandReact, IconStar } from '@tabler/icons-react';
 import { useRef, useState } from 'react';
 import ScratchCard, { ScratchCardRef } from 'src/components/ScratchCard';
