@@ -42,78 +42,84 @@ const Home = () => {
                 }}
                 mt={'8'}
             >
-                <Card
-                    style={{
-                        padding: 30,
-                    }}
-                >
-                    <Flex
-                        direction={'column'}
-                        mb={'6'}
-                    >
-                        <Text
-                            size={'7'}
-                            weight={'bold'}
-                            align={'center'}
-                        >
-                            {'Raspadinha das estrelas'}
-                        </Text>
+                {0 < icons.length && (
 
-                        <Text
-                            size={'3'}
-                            align={'center'}
-                        >
-                            {'Consiga 3 estrelas para ganhar!'}
-                        </Text>
-                    </Flex>
-
-                    <div
-                        ref={cardRef}
+                    <Card
+                        style={{
+                            padding: 30,
+                        }}
                     >
-                        <ScratchCard
-                            finishPercent={50}
-                            brushSize={20}
-                            height={150}
-                            width={cardRef.current?.clientWidth || 300}
-                            customBrush={{
-                                image: 'https://masth0.github.io/ScratchCard/images/brush.png',
-                                width: 30,
-                                height: 30,
-                            }}
-                            onComplete={() => setFinished(true)}
-                            ref={scratchCardRef}
-                            image={'https://media.istockphoto.com/id/1304346401/photo/photo-of-gray-detailed-wall-with-abstract-pattern-gray-background-or-texture.jpg?s=612x612&w=0&k=20&c=CeVwx5ktPm890nbylQWyzcenhhfSLWROVBE8ZiZrgq0='}
+                        <Flex
+                            direction={'column'}
+                            mb={'6'}
                         >
-                            <Flex
+                            <Text
+                                size={'7'}
+                                weight={'bold'}
                                 align={'center'}
-                                justify={'between'}
-                                style={{
-                                    width: '100%',
-                                    height: '100%',
-                                }}
                             >
-                                {icons.map((Icon, index) => (
-                                    <Icon
-                                        key={index}
-                                        size={90}
-                                        color={'gold'}
-                                    />
-                                ))}
-                            </Flex>
-                        </ScratchCard>
-                    </div>
-                </Card>
+                                {'Raspadinha das estrelas'}
+                            </Text>
+
+                            <Text
+                                size={'3'}
+                                align={'center'}
+                            >
+                                {'Consiga 3 estrelas para ganhar!'}
+                            </Text>
+                        </Flex>
+
+                        <div
+                            ref={cardRef}
+                        >
+                            <ScratchCard
+                                finishPercent={50}
+                                brushSize={20}
+                                height={150}
+                                width={cardRef.current?.clientWidth || 300}
+                                customBrush={{
+                                    image: 'https://masth0.github.io/ScratchCard/images/brush.png',
+                                    width: 30,
+                                    height: 30,
+                                }}
+                                onComplete={() => setFinished(true)}
+                                ref={scratchCardRef}
+                                image={'https://media.istockphoto.com/id/1304346401/photo/photo-of-gray-detailed-wall-with-abstract-pattern-gray-background-or-texture.jpg?s=612x612&w=0&k=20&c=CeVwx5ktPm890nbylQWyzcenhhfSLWROVBE8ZiZrgq0='}
+                            >
+                                <Flex
+                                    align={'center'}
+                                    justify={'between'}
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                    }}
+                                >
+                                    {icons.map((Icon, index) => (
+                                        <Icon
+                                            key={index}
+                                            size={90}
+                                            color={'gold'}
+                                        />
+                                    ))}
+                                </Flex>
+                            </ScratchCard>
+                        </div>
+                    </Card>
+                )}
 
                 {finished && (
                     <Text
-                        size={'3'}
+                        size={'5'}
+                        style={{
+                            padding: 20,
+                        }}
                         align={'center'}
                     >
                         {isWinner ? 'Parabéns! Você ganhou!' : 'Que pena! Tente novamente!'}
                     </Text>
                 )}
 
-                {finished && (
+                {(finished || 0 === icons.length) && (
                     <Button
                         onClick={reset}
                         size={'4'}
